@@ -9,14 +9,16 @@ int main(){
 	}
 	char *p=strtok(a," ");
 	char tmp[105];
+	char *name;
 	int count=0;
 	while(p!=NULL){
 		tmp[count++]=p[0];
 		char *p1=p;
 		p=strtok(NULL," ");
-		if(p==NULL) printf("%s",p1);
+		if(p==NULL) name=p1;
 	}
 	for(int i=0;i<count-1;i++) printf("%c",tmp[i]);
+	printf("%s",name);
 	printf("@ptit.edu.vn\n");
 	return 0;
 }

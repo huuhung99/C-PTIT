@@ -1,5 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include<stdio.h>
 int t;
 int gcdMin(int n){
 	for(int i=3;i<=n;i+=2){
@@ -15,25 +14,30 @@ bool isprime(int n){
 	return true;
 }
 int main(){
-	cin>>t;
-//	srand(time(NULL));
+	scanf("%d",&t);
 	while(t--){
-		int n;
-//		n=rand()%1000;
-//		cout<<n<<endl;
-		cin>>n;
-		cout<<"1 ";
-		for(int i=2;i<=n;i++){
-			if(i%2==0){
-				cout<<"2 ";
-				continue;
+		int n;scanf("%d",&n);
+		if(n%2==0)
+			for(int i=2;i<=n;i+=2){
+				if(isprime(i-1)){
+					printf("%d 2 ",i-1);
+					continue;
+				}
+				printf("%d 2 ",gcdMin(i-1));
 			}
-			if(isprime(i)){
-				cout<<i<<" ";
-				continue;
+		else{
+			for(int i=1;i<n;i+=2){
+				if(isprime(i)){
+					printf("%d 2 ",i);
+					continue;
+				}
+				printf("%d 2 ",gcdMin(i));
 			}
-			cout<<gcdMin(i)<<" ";
+			if(isprime(n)){
+					printf("%d ",n);
+			}
+			else printf("%d ",gcdMin(n));
 		}
-		cout<<endl;
+		printf("\n");
 	}
 }
